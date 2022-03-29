@@ -1,0 +1,15 @@
+<main>
+    <h1>Search for a github profile.</h1>
+    
+    <p>Find a summary of your favourite person's github and explore some projects they are involed in, 
+        get connected via their social media handle. Just basically explore them!</p>
+    
+    <form [formGroup]="userNameForm" (ngSubmit)="onSubmit(userNameForm.value)">
+        <input id="userName" type="text" placeholder="enter user name" formControlName="userName" />
+        <button type="submit">Search</button>        
+    </form>
+    
+    <ul>
+        <li *ngFor="let item of githubData$">{{item.name | json}}</li>
+    </ul>
+</main>
