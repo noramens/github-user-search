@@ -5,11 +5,15 @@
         get connected via their social media handle. Just basically explore them!</p>
     
     <form [formGroup]="userNameForm" (ngSubmit)="onSubmit(userNameForm.value)">
-        <input id="userName" type="text" placeholder="enter user name" formControlName="userName" />
-        <button type="submit">Search</button>        
+        <input for="userName" type="text" placeholder="enter user name" formControlName="userName" />
+        <button type="submit" [disabled]="userNameForm.value.userName === '' ">Search</button>        
     </form>
     
-    <ul>
-        <li *ngFor="let item of githubData$">{{item.name | json}}</li>
-    </ul>
+    <div *ngFor="let item of githubData$" class="details">
+        <img alt="profile picture" [src]="item.avatar_url" width="20%" height="20%"/>
+        <h2>{{item.name}}</h2>
+        <p *ngIf="item && item.bio">{{item.bio}}</p>
+        <p><strong>{{item.followers}}</strong> followers <strong>{{item.following}}</strong> following</p>
+        <a routerLink="/user-details">Read more</a>
+    </div>
 </main>

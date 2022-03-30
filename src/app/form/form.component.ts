@@ -21,10 +21,11 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(userNameForm: { userName: string }) {
-    this.githubService.getGithub(userNameForm).subscribe((data) => {
-      console.log('data: ', data);
-      this.githubData$ = [data];
-    });
+    userNameForm?.userName &&
+      this.githubService.getGithub(userNameForm).subscribe((data) => {
+        console.log('data: ', data);
+        this.githubData$ = [data];
+      });
     this.userNameForm.reset();
   }
 }

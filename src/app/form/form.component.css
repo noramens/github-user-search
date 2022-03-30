@@ -1,5 +1,6 @@
 main {
   width: 65vw;
+  margin: 5rem auto;
 }
 
 h1 {
@@ -35,4 +36,22 @@ form button {
   border: 1px solid #37474a;
   outline: 1px solid #37474a;
   font-size: 1rem;
+}
+
+form button:hover {
+  cursor: pointer;
+}
+
+form button:disabled {
+  cursor: no-drop;
+}
+
+img {
+  border-radius: 50%;
+}
+
+.details {
+  margin: 4rem auto;
+  text-align: center;
+  width: 30vw;
 }

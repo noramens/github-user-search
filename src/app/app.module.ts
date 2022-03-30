@@ -6,9 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
-  declarations: [AppComponent, FormComponent],
+  declarations: [AppComponent, FormComponent, UserDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
