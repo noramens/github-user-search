@@ -1,0 +1,29 @@
+<div *ngFor="let item of userDetails$" id="details">
+    <img alt="profile picture" [src]="item.avatar_url" width="50%" height="50%" />
+    <h2 id="nameHeading">{{item.name}}</h2>
+    <p *ngIf="item && item.bio">{{item.bio}}</p>
+    <p><strong>{{item.followers}}</strong> followers <strong>{{item.following}}</strong> following </p>
+    <p><strong>{{item.public_repos}}</strong> public repos
+    <strong>{{item.public_gists}}</strong> public_gists</p>
+    <div>
+        <a [href]="item.blog" target="_blank">Visit blog</a>
+        <a [href]="twitterLink" target="_blank" id="twitterLink" *ngIf="twitterLink">Visit Twitter</a>
+    </div>
+    
+</div>
+
+<div id="repos">
+    <h3 *ngIf="repos$">Explore Repositories:</h3>
+    <div id="grid">
+        <div *ngFor="let repo of repos$" id="repoContainer">
+            <h4>{{repo.name}}</h4>
+            <p>{{repo.description}}</p>
+            <a [href]="repo.clone_url" target="_blank">Visit repo</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
