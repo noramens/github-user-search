@@ -5,7 +5,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
   { path: 'home', component: FormComponent },
-  { path: 'user-details', component: UserDetailsComponent },
+  { path: 'user-details/:userName', component: UserDetailsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

@@ -25,7 +25,7 @@ form input {
   height: 2rem;
   background-color: #eef2f7;
   border: 1px solid #eef2f7;
-  outline: 1px solid #eef2f7;
+  outline: #eef2f7;
   font-size: 2rem;
   color: #61655e;
 }
@@ -34,7 +34,7 @@ form button {
   color: #eef2f7;
   padding: 10px 20px;
   border: 1px solid #37474a;
-  outline: 1px solid #37474a;
+  outline: #37474a;
   font-size: 1rem;
 }
 

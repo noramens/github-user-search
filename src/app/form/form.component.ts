@@ -21,8 +21,9 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(userNameForm: { userName: string }) {
-    userNameForm?.userName &&
-      this.githubService.getGithub(userNameForm).subscribe((data) => {
+    const userName: string = userNameForm?.userName;
+    userName &&
+      this.githubService.getGithub(userName).subscribe((data) => {
         console.log('data: ', data);
         this.githubData$ = [data];
       });

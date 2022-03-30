@@ -14,6 +14,6 @@
         <h2>{{item.name}}</h2>
         <p *ngIf="item && item.bio">{{item.bio}}</p>
         <p><strong>{{item.followers}}</strong> followers <strong>{{item.following}}</strong> following</p>
-        <a routerLink="/user-details">Read more</a>
+        <a [routerLink]="['/user-details', item.login]">Read more</a>
     </div>
 </main>
