@@ -62,7 +62,7 @@ p {
 
 #repos {
   width: 80vw;
-  margin: auto;
+  margin: auto auto 2rem;
 }
 
 h3 {

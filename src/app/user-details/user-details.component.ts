@@ -24,16 +24,14 @@ export class UserDetailsComponent implements OnInit {
     this.userName = this.route.snapshot.paramMap.get('userName');
     this.userName &&
       this.githubService.getGithub(this.userName).subscribe((data) => {
-        console.log('data: ', data);
         this.userDetails$ = [data];
+        const twitterHandle = this.userDetails$[0]?.twitter_username;
         this.twitterLink =
-          this.userDetails$.twitter_username &&
-          `https://twitter.com/${this.userDetails$.twitter_username}`;
+          twitterHandle && `https://twitter.com/${twitterHandle}`;
       });
 
     this.userName &&
       this.getReposService.getRepos(this.userName).subscribe((data) => {
-        console.log('repos: ', data);
         this.repos$ = data;
       });
   }
