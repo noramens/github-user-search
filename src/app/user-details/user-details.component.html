@@ -4,16 +4,16 @@
     <p *ngIf="item && item.bio">{{item.bio}}</p>
     <p><strong>{{item.followers}}</strong> followers <strong>{{item.following}}</strong> following </p>
     <p><strong>{{item.public_repos}}</strong> public repos
-    <strong>{{item.public_gists}}</strong> public_gists</p>
+    <strong>{{item.public_gists}}</strong> public gists</p>
     <div>
-        <a [href]="item.blog" target="_blank">Visit blog</a>
+        <a [href]="item.blog" target="_blank" *ngIf="item && item.blog">Visit blog</a>
         <a [href]="twitterLink" target="_blank" id="twitterLink" *ngIf="twitterLink">Visit Twitter</a>
     </div>
     
 </div>
 
 <div id="repos">
-    <h3 *ngIf="repos$">Explore Repositories:</h3>
+    <h3 *ngIf="repos$ && repos$.length > 0">Explore Repositories:</h3>
     <div id="grid">
         <div *ngFor="let repo of repos$" id="repoContainer">
             <h4>{{repo.name}}</h4>
