@@ -8,12 +8,26 @@
         <input for="userName" type="text" placeholder="enter user name" formControlName="userName" />
         <button type="submit" [disabled]="userNameForm.value.userName === '' ">Search</button>        
     </form>
-    
-    <div *ngFor="let item of githubData$" class="details">
-        <img alt="profile picture" [src]="item.avatar_url" width="20%" height="20%"/>
-        <h2>{{item.name}}</h2>
-        <p *ngIf="item && item.bio">{{item.bio}}</p>
-        <p><strong>{{item.followers}}</strong> followers <strong>{{item.following}}</strong> following</p>
-        <a [routerLink]="['/user-details', item.login]">Read more</a>
+
+    <ng-container *ngIf="!loading">
+        <div *ngFor="let item of githubData$" class="details">
+            <img alt="profile picture" [src]="item.avatar_url" width="20%" height="20%" />
+            <h2>{{item.name}}</h2>
+            <p *ngIf="item && item.bio">{{item.bio}}</p>
+            <p><strong>{{item.followers}}</strong> followers <strong>{{item.following}}</strong> following</p>
+            <a [routerLink]="['/user-details', item.login]">Read more</a>
+        </div>
+    </ng-container>
+
+    <div *ngIf="errorStatus === 404" class="details">
+        <h4>Sorry, this git user does not exist.</h4>
+    </div>
+
+    <div *ngIf="errorStatus && errorStatus !== 404" class="details">
+        <h4>Sorry, there was an error fetching user. Check your connection and try again.</h4>
+    </div>
+
+    <div *ngIf="loading" class="details">
+        <h4>loading...</h4>
     </div>
 </main>
