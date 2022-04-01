@@ -24,11 +24,11 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(userNameForm: { userName: string; reset: Function }) {
-    this.loading = true;
     this.githubData$ = [];
     this.errorStatus = '';
     const userName: string = userNameForm?.userName;
-    userName &&
+    if (userName) {
+      this.loading = true;
       this.githubService
         .getGithub(userName)
         .pipe(
@@ -45,5 +45,6 @@ export class FormComponent implements OnInit {
             this.errorStatus = error.status;
           },
         });
+    }
   }
 }
