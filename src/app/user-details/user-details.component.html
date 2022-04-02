@@ -1,4 +1,4 @@
-<div *ngFor="let item of userDetails$" id="details">
+<div *ngFor="let item of userDetails$" class="details">
     <img alt="profile picture" [src]="item.avatar_url" width="50%" height="50%" />
     <h2 id="nameHeading">{{item.name}}</h2>
     <p *ngIf="item && item.bio">{{item.bio}}</p>
@@ -9,11 +9,29 @@
         <a [href]="item.blog" target="_blank" *ngIf="item && item.blog">Visit blog</a>
         <a [href]="twitterLink" target="_blank" id="twitterLink" *ngIf="twitterLink">Visit Twitter</a>
     </div>
-    
+</div>
+
+<div *ngIf="loadingUserDetails" class="details">
+    <h4>loading user details...</h4>
+</div>
+
+<div *ngIf="errorLoadingUserDetails" class="details">
+    <h4>Sorry, there was an error fetching user details.</h4>
+    <button (click)="fetchUserDetails()">Try again</button>
 </div>
 
 <div id="repos">
-    <h3 *ngIf="repos$ && repos$.length > 0">Explore Repositories:</h3>
+    <h3>Explore Repositories:</h3>
+
+    <div *ngIf="loadingRepos" class="details">
+        <h4>loading user's repositories...</h4>
+    </div>
+    
+    <div *ngIf="errorLoadingRepos" class="details">
+        <h4>Sorry, there was an error fetching user's repositories.</h4>
+        <button (click)="fetchRepos()">Try again</button>
+    </div>
+    
     <div id="grid">
         <div *ngFor="let repo of repos$" id="repoContainer">
             <h4>{{repo.name}}</h4>

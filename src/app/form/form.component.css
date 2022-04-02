@@ -15,7 +15,7 @@ p {
 form {
   background-color: #eef2f7;
   padding: 1rem;
-  width: 30vw;
+  width: 40vw;
   display: flex;
 }
 
@@ -54,4 +54,13 @@ img {
   margin: 4rem auto;
   text-align: center;
   width: 30vw;
+}
+
+#close {
+  background-color: #eef2f7;
+  margin: 0 1rem;
+}
+
+#close:hover {
+  cursor: pointer;
 }
