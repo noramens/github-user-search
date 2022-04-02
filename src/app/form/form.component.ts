@@ -23,28 +23,37 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(userNameForm: { userName: string; reset: Function }) {
+  fetchGitData(userName: string): void {
+    this.githubService
+      .getGithub(userName)
+      .pipe(
+        finalize(() => {
+          this.loading = false;
+        })
+      )
+      .subscribe({
+        next: (data) => {
+          this.githubData$ = [data];
+        },
+        error: (error) => {
+          this.errorStatus = error.status;
+          throw error;
+        },
+      });
+  }
+
+  handleClose(): void {
+    this.userNameForm.reset();
+    this.githubData$ = [];
+  }
+
+  onSubmit(userNameForm: { userName: string }): void {
     this.githubData$ = [];
     this.errorStatus = '';
     const userName: string = userNameForm?.userName;
     if (userName) {
       this.loading = true;
-      this.githubService
-        .getGithub(userName)
-        .pipe(
-          finalize(() => {
-            this.loading = false;
-            this.userNameForm.reset();
-          })
-        )
-        .subscribe({
-          next: (data) => {
-            this.githubData$ = [data];
-          },
-          error: (error) => {
-            this.errorStatus = error.status;
-          },
-        });
+      this.fetchGitData(userName);
     }
   }
 }
