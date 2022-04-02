@@ -27,58 +27,63 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = this.route.snapshot.paramMap.get('userName');
-    this.userDetails$ = [];
-    this.errorLoadingUserDetails = false;
-    this.errorLoadingRepos = false;
 
-    if (this.userName) {
-      this.loadingUserDetails = true;
-      this.loadingRepos = true;
-
-      this.fetchUserDetails();
-
-      this.fetchRepos();
-    }
+    this.fetchUserDetails();
+    this.fetchRepos();
   }
 
   fetchUserDetails(): void {
-    this.githubService
-      .getGithub(this.userName)
-      .pipe(
-        finalize(() => {
-          this.loadingUserDetails = false;
-        })
-      )
-      .subscribe({
-        next: (data) => {
-          this.userDetails$ = [data];
-          const twitterHandle = this.userDetails$[0]?.twitter_username;
-          this.twitterLink =
-            twitterHandle && `https://twitter.com/${twitterHandle}`;
-        },
-        error: (error) => {
-          this.errorLoadingUserDetails = true;
-          throw error;
-        },
-      });
+    this.userDetails$ = [];
+    this.errorLoadingUserDetails = false;
+
+    if (this.userName) {
+      this.loadingUserDetails = true;
+
+      this.githubService
+        .getGithub(this.userName)
+        .pipe(
+          finalize(() => {
+            this.loadingUserDetails = false;
+          })
+        )
+        .subscribe({
+          next: (data) => {
+            this.userDetails$ = [data];
+            const twitterHandle = this.userDetails$[0]?.twitter_username;
+            this.twitterLink =
+              twitterHandle && `https://twitter.com/${twitterHandle}`;
+          },
+          error: (error) => {
+            this.errorLoadingUserDetails = true;
+            throw error;
+          },
+        });
+    }
   }
 
   fetchRepos(): void {
-    this.getReposService
-      .getRepos(this.userName)
-      .pipe(
-        finalize(() => {
-          this.loadingRepos = false;
-        })
-      )
-      .subscribe({
-        next: (data) => {
-          this.repos$ = data;
-        },
-        error: (error) => {
-          this.errorLoadingRepos = true;
-          throw error;
-        },
-      });
+    this.errorLoadingRepos = false;
+    this.repos$ = [];
+
+    if (this.userName) {
+      this.loadingRepos = true;
+
+      this.getReposService
+        .getRepos(this.userName)
+        .pipe(
+          finalize(() => {
+            this.loadingRepos = false;
+          })
+        )
+        .subscribe({
+          next: (data) => {
+            this.repos$ = data;
+          },
+          error: (error) => {
+            this.errorLoadingRepos = true;
+            throw error;
+          },
+        });
+    }
   }
 }

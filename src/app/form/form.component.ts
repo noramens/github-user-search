@@ -44,7 +44,6 @@ export class FormComponent implements OnInit {
 
   handleClose(): void {
     this.userNameForm.reset();
-    this.githubData$ = [];
   }
 
   onSubmit(userNameForm: { userName: string }): void {
