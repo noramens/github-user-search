@@ -1,32 +1,65 @@
-<<<<<<< HEAD
-# github-user-search
-Angular application with api request to search for github accounts
-=======
 # GithubUserSearch
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+Search for git profiles and view details. An helpful application if you are learning any new library.
 
-## Development server
+## Pre-requisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Ensure you have the following set up locally:
 
-## Code scaffolding
+- [Node](https://nodejs.org)
+- [Angular CLI](https://github.com/angular/angular-cli). This project uses version 13.3.0.
+- [Git](https://www.atlassian.com/git/tutorials/install-git)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Getting started
 
-## Build
+These instructions will get you a copy of the project on your local machine for development and testing purposes.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Installation
 
-## Running unit tests
+Clone the [application](https://github.com/noramens/github-user-search.git) using any of the methods stated below.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> **NOTE: This project uses npm**
 
-## Running end-to-end tests
+**Via SSH**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```sh
+git clone git@github.com:noramens/github-user-search.git
+```
 
-## Further help
+**Via HTTPS**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
->>>>>>> master
+```sh
+git clone https://github.com/noramens/github-user-search.git
+```
+
+### Switch to the directory
+
+```sh
+cd github-user-search
+```
+
+### Install the dependencies
+
+Run
+
+```sh
+npm install
+```
+
+### Starting the App
+
+Run the github-user-search development server:
+
+```sh
+npm run start
+```
+
+The browser is expected to launch the app on the browser on http://localhost:4200.
+
+### Testing
+
+Run tests to validate that the code changes doesn't degrade the application.
+
+```sh
+npm test
+```
