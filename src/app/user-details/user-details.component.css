@@ -89,3 +89,25 @@ button {
 button:hover {
   cursor: pointer;
 }
+
+@media screen and (min-width: 280px) and (max-width: 760px) {
+  .details {
+    width: 90vw;
+  }
+
+  #repos {
+    width: 90vw;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  #grid {
+    grid-template-columns: 1fr;
+  }
+
+  #repoContainer {
+    width: 80vw;
+  }
+}
