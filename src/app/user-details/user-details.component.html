@@ -26,6 +26,10 @@
     <div *ngIf="loadingRepos" class="details">
         <h4>loading user's repositories...</h4>
     </div>
+
+    <div *ngIf="!loadingRepos && repos$?.length === 0" class="details">
+        <h4>there are no repositories for this user</h4>
+    </div>
     
     <div *ngIf="errorLoadingRepos" class="details">
         <h4>Sorry, there was an error fetching user's repositories.</h4>
