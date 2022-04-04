@@ -5,8 +5,12 @@
         get connected via their social media handle. Just basically explore them!</p>
     
     <form [formGroup]="userNameForm" (ngSubmit)="onSubmit(userNameForm.value)">
-        <input for="userName" type="text" placeholder="enter user name" formControlName="userName" />
-        <img *ngIf="userNameForm.value.userName" src="assets/svg/close.svg" alt="close icon" id="close" (click)="handleClose()" />
+        <div id="inputContainer">
+            <input for="userName" type="text" placeholder="enter user name" formControlName="userName" id="input" />
+            <img *ngIf="userNameForm.value.userName" src="assets/svg/close.svg" alt="close icon" id="close"
+                (click)="handleClose()" />
+        </div>
+        
         <button type="submit" [disabled]="userNameForm.value.userName === '' ">Search</button>        
     </form>
 
